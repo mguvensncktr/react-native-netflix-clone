@@ -3,31 +3,175 @@ export const crimeMovies = [
         id: 1,
         title: 'The Shawshank Redemption',
         image: 'https://m.media-amazon.com/images/I/51NiGlapXlL._AC_.jpg',
+        year: 1994,
+        duration: '2h 22min',
+        cast: [
+            {
+                name: 'Tim Robbins',
+            },
+            {
+                name: 'Morgan Freeman',
+            },
+            {
+                name: 'Bob Gunton',
+            },
+            {
+                name: 'William Sadler',
+            },
+            {
+                name: 'Clifford W. Reed',
+            },
+            {
+                name: 'Bob Gunton',
+            },
+        ],
+        director: 'Frank Darabont',
+        synopsis: 'Movie about escaping from the prison of Shawshank after being accused of a crime.',
     },
     {
         id: 2,
         title: 'The Godfather',
         image: 'https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg',
+        year: 1994,
+        duration: '2h 22min',
+        cast: [
+            {
+                name: 'Tim Robbins',
+            },
+            {
+                name: 'Morgan Freeman',
+            },
+            {
+                name: 'Bob Gunton',
+            },
+            {
+                name: 'William Sadler',
+            },
+            {
+                name: 'Clifford W. Reed',
+            },
+            {
+                name: 'Bob Gunton',
+            },
+        ],
+        director: 'Frank Darabont',
+        synopsis: 'Movie about escaping from the prison of Shawshank after being accused of a crime.',
     },
     {
         id: 3,
         title: 'The Godfather: Part II',
         image: 'https://m.media-amazon.com/images/M/MV5BMWMwMGQzZTItY2JlNC00OWZiLWIyMDctNDk2ZDQ2YjRjMWQ0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg',
+        year: 1994,
+        duration: '2h 22min',
+        cast: [
+            {
+                name: 'Tim Robbins',
+            },
+            {
+                name: 'Morgan Freeman',
+            },
+            {
+                name: 'Bob Gunton',
+            },
+            {
+                name: 'William Sadler',
+            },
+            {
+                name: 'Clifford W. Reed',
+            },
+            {
+                name: 'Bob Gunton',
+            },
+        ],
+        director: 'Frank Darabont',
+        synopsis: 'Movie about escaping from the prison of Shawshank after being accused of a crime.',
     },
     {
         id: 4,
         title: 'The Dark Knight',
         image: 'https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg',
+        year: 1994,
+        duration: '2h 22min',
+        cast: [
+            {
+                name: 'Tim Robbins',
+            },
+            {
+                name: 'Morgan Freeman',
+            },
+            {
+                name: 'Bob Gunton',
+            },
+            {
+                name: 'William Sadler',
+            },
+            {
+                name: 'Clifford W. Reed',
+            },
+            {
+                name: 'Bob Gunton',
+            },
+        ],
+        director: 'Frank Darabont',
+        synopsis: 'Movie about escaping from the prison of Shawshank after being accused of a crime.',
     },
     {
         id: 5,
         title: 'Joker',
         image: 'https://m.media-amazon.com/images/M/MV5BNGVjNWI4ZGUtNzE0MS00YTJmLWE0ZDctN2ZiYTk2YmI3NTYyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg',
+        year: 1994,
+        duration: '2h 22min',
+        cast: [
+            {
+                name: 'Tim Robbins',
+            },
+            {
+                name: 'Morgan Freeman',
+            },
+            {
+                name: 'Bob Gunton',
+            },
+            {
+                name: 'William Sadler',
+            },
+            {
+                name: 'Clifford W. Reed',
+            },
+            {
+                name: 'Bob Gunton',
+            },
+        ],
+        director: 'Frank Darabont',
+        synopsis: 'Movie about escaping from the prison of Shawshank after being accused of a crime.',
     },
     {
         id: 6,
         title: 'The Town',
         image: 'https://image.tmdb.org/t/p/original/3NIzyXkfylsjflRKSz8Fts3lXzm.jpg',
+        year: 1994,
+        duration: '2h 22min',
+        cast: [
+            {
+                name: 'Tim Robbins',
+            },
+            {
+                name: 'Morgan Freeman',
+            },
+            {
+                name: 'Bob Gunton',
+            },
+            {
+                name: 'William Sadler',
+            },
+            {
+                name: 'Clifford W. Reed',
+            },
+            {
+                name: 'Bob Gunton',
+            },
+        ],
+        director: 'Frank Darabont',
+        synopsis: 'Movie about escaping from the prison of Shawshank after being accused of a crime.',
     }
 ]
 

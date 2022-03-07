@@ -12,6 +12,7 @@ export const COLORS = {
     darkRed: '#831010',
     transparent: "transparent",
     red: "#db0000",
+    darkGray: "#383838",
 };
 
 export const SIZES = {
