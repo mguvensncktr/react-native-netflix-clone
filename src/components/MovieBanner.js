@@ -12,7 +12,7 @@ const MovieBanner = () => {
                 source={images.banner}
                 style={{
                     width: SIZES.width,
-                    height: SIZES.height > 500 ? SIZES.height * 0.8 : SIZES.height * 0.7,
+                    height: SIZES.height > 700 ? SIZES.height * 0.8 : SIZES.height * 0.7,
                     justifyContent: 'space-between'
                 }}
                 resizeMode="cover"
@@ -20,8 +20,12 @@ const MovieBanner = () => {
                 <Header />
                 <LinearGradient
                     colors={['rgba(0,0,0,0.1)', COLORS.black]}
-                    height={60}
+                    height={50}
+                    style={{
+                        height: 50
+                    }}
                 />
+
             </ImageBackground>
             <View
                 style={{

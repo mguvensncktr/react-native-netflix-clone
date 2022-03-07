@@ -1,6 +1,6 @@
-import { View, Text, TouchableOpacity, Image } from 'react-native'
+import { TouchableOpacity, Image } from 'react-native'
 import React from 'react'
-import { images, SIZES } from '../constants'
+import { SIZES } from '../constants'
 
 const MovieCardItem = ({ movie }) => {
     return (
