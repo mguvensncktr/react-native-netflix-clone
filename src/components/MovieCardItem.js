@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import { images, SIZES } from '../constants'
 
-const MovieCardItem = ({ image }) => {
+const MovieCardItem = ({ movie }) => {
     return (
         <TouchableOpacity
             style={{
@@ -13,7 +13,7 @@ const MovieCardItem = ({ image }) => {
             onPress={() => console.log('Movie pressed')}
         >
             <Image
-                source={{ uri: image }}
+                source={{ uri: movie?.image }}
                 style={{
                     width: '100%',
                     height: '100%',

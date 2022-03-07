@@ -1,9 +1,16 @@
 import { View, Text, ScrollView } from 'react-native'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { COLORS, FONTS, SIZES } from '../constants'
 import MovieCardItem from './MovieCardItem'
 
-const Row = ({ title, image }) => {
+const Row = ({ title, data }) => {
+
+    const [movies, setMovies] = useState([]);
+
+    useEffect(() => {
+        setMovies(data);
+    }, [])
+
     return (
         <View
             style={{
@@ -15,9 +22,13 @@ const Row = ({ title, image }) => {
             <ScrollView
                 horizontal showsHorizontalScrollIndicator={false}
             >
-                <MovieCardItem image={image} />
-                <MovieCardItem image={image} />
-                <MovieCardItem image={image} />
+                {
+                    movies.map((movie, index) => {
+                        return (
+                            <MovieCardItem key={index} movie={movie} />
+                        )
+                    })
+                }
             </ScrollView>
         </View>
     )
