@@ -4,8 +4,10 @@ import HomeScreen from './src/screens/HomeScreen';
 export default function App() {
 
   let [fontsLoaded] = useFonts({
-    'Consola-Bold': require('./assets/fonts/Consola-Bold.ttf'),
-    'Consola-Regular': require('./assets/fonts/Consola-Regular.ttf'),
+    'Poppins-Bold': require('./assets/fonts/Poppins-Bold.ttf'),
+    'Poppins-Regular': require('./assets/fonts/Poppins-Regular.ttf'),
+    'Poppins-Black': require('./assets/fonts/Poppins-Black.ttf'),
+    'Poppins-Medium': require('./assets/fonts/Poppins-Medium.ttf'),
   });
 
   if (!fontsLoaded) {
