@@ -5,6 +5,7 @@ import { AntDesign, MaterialCommunityIcons, FontAwesome, Feather } from '@expo/v
 import { useNavigation } from '@react-navigation/native'
 import SimilarCardItem from './SimilarCardItem';
 import axios from '../utils/axios';
+import { APIKEY } from "@env";
 
 const CustomButton = ({ title, containerStyle, titleStyle, icon, iconStyle, onPress }) => {
 
@@ -39,13 +40,19 @@ const ModalDetail = ({ route }) => {
     const [loading, setLoading] = React.useState(false);
     const { movie } = route.params;
     const navigation = useNavigation();
+    //random number between 75 and 100
+    const random = Math.floor(Math.random() * (100 - 75 + 1)) + 75;
 
     const fetchSimilar = async () => {
+
+        const urlForMovies = movie?.media_type != 'tv' ? `https://api.themoviedb.org/3/movie/${movie?.id}/similar?api_key=${APIKEY}&language=en-US&page=1`
+            : `https://api.themoviedb.org/3/tv/${movie?.id}/similar?api_key=${APIKEY}&language=en-US&page=1`
+
         if (loading) {
             return;
         }
         setLoading(true);
-        const { data } = await axios.get(`https://api.themoviedb.org/3/movie/${movie?.id}/similar?api_key=b3c006b5a566f0c5cb85bf9ea65d184a&language=en-US&page=1`);
+        const { data } = await axios.get(urlForMovies);
         setSimilar(data.results);
         setLoading(false);
     }
@@ -54,17 +61,17 @@ const ModalDetail = ({ route }) => {
         fetchSimilar();
     }, [])
 
-    const movieYear = movie?.release_date.split('-')[0] || movie?.first_air_date.split('-')[0];
+    const movieYear = movie?.release_date?.split('-')[0] || movie?.first_air_date?.split('-')[0];
 
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.black }}>
             <Image
-                source={{ uri: `https://image.tmdb.org/t/p/original${movie?.poster_path}` }}
+                source={{ uri: `https://image.tmdb.org/t/p/original${movie?.backdrop_path}` }}
                 style={{
                     width: '100%',
-                    height: 300
+                    height: 250
                 }}
-                resizeMode="cover"
+                resizeMode="contain"
             />
             {/* Action Buttons */}
             <View
@@ -154,7 +161,7 @@ const ModalDetail = ({ route }) => {
                                 source={icons.netflixsmall}
                                 resizeMode="contain"
                             />
-                            <Text style={{ color: COLORS.gray2, ...FONTS.body4, letterSpacing: 2 }}>{movie?.media_type == 'tv' ? "Tv Series" : "Movie"}</Text>
+                            <Text style={{ color: COLORS.gray2, ...FONTS.body4, letterSpacing: 2 }}>Netflix</Text>
                         </View>
                         <View
                             style={{ marginTop: SIZES.base }}
@@ -170,7 +177,7 @@ const ModalDetail = ({ route }) => {
                             <View
                                 style={{ flexDirection: 'row', alignItems: 'center' }}
                             >
-                                <Text style={{ color: 'green', ...FONTS.body3 }}>%97 match</Text>
+                                <Text style={{ color: 'green', ...FONTS.body3 }}>{`${random}% Match`}</Text>
                                 <Text style={{ color: COLORS.white, ...FONTS.body3, marginLeft: SIZES.base }}>{movieYear}</Text>
                             </View>
                         </View>

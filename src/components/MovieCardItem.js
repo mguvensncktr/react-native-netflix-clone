@@ -12,7 +12,7 @@ const MovieCardItem = ({ movie }) => {
             style={{
                 width: SIZES.width / 3,
                 height: SIZES.height / 3 - 50,
-                marginRight: SIZES.base
+                marginRight: SIZES.base,
             }}
             onPress={() => navigation.navigate('Modal', { movie: movie })}
         >

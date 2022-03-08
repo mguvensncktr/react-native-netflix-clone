@@ -1,18 +1,19 @@
-import { View, Text, ImageBackground } from 'react-native'
+import { View, Text, ImageBackground, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { LinearGradient } from 'expo-linear-gradient'
 import { MaterialCommunityIcons, AntDesign, Feather } from '@expo/vector-icons';
 import Header from './Header'
-import { COLORS, SIZES, FONTS, images } from '../constants'
+import { COLORS, SIZES, FONTS } from '../constants'
 import axios from '../utils/axios';
 import requests from '../utils/requests';
-import Divider from './Divider';
+import { useNavigation } from '@react-navigation/native';
 
 const MovieBanner = () => {
 
     const [movie, setMovie] = React.useState([]);
     const [loading, setLoading] = React.useState(false);
     const [genres, setGenres] = React.useState([]);
+    const navigation = useNavigation();
 
     const fetchData = async () => {
         if (loading) {
@@ -60,7 +61,7 @@ const MovieBanner = () => {
                 source={{ uri: `https://image.tmdb.org/t/p/original${movie?.poster_path}` }}
                 style={{
                     width: SIZES.width,
-                    height: SIZES.height > 700 ? SIZES.height * 0.8 : SIZES.height * 0.7,
+                    height: SIZES.height > 700 ? SIZES.height * 0.9 : SIZES.height * 0.8,
                     justifyContent: 'space-between'
                 }}
                 resizeMode="cover"
@@ -87,7 +88,6 @@ const MovieBanner = () => {
                             return (
                                 <Text key={index} style={{ ...FONTS.body3, color: COLORS.white, marginHorizontal: SIZES.base }}>
                                     {genreName}
-                                    {index !== movie?.genre_ids?.length - 1 ? <Divider /> : null}
                                 </Text>
                             );
                         })
@@ -107,7 +107,7 @@ const MovieBanner = () => {
                         <Text style={{ color: COLORS.white, ...FONTS.body3 }}>My List</Text>
                     </View>
                     {/* Play */}
-                    <View
+                    <TouchableOpacity
                         style={{
                             paddingHorizontal: SIZES.padding2 + SIZES.base,
                             paddingVertical: SIZES.base,
@@ -116,10 +116,11 @@ const MovieBanner = () => {
                             backgroundColor: COLORS.white,
                             borderRadius: 5,
                         }}
+                        onPress={() => navigation.navigate('Modal', { movie: movie })}
                     >
                         <AntDesign name="caretright" size={24} color="black" />
                         <Text style={{ color: COLORS.black, ...FONTS.h4, marginLeft: SIZES.base }}>Play</Text>
-                    </View>
+                    </TouchableOpacity>
                     {/* Info */}
                     <View
                         style={{
