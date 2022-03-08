@@ -17,7 +17,7 @@ const MovieCardItem = ({ movie }) => {
             onPress={() => navigation.navigate('Modal', { movie: movie })}
         >
             <Image
-                source={{ uri: movie?.image }}
+                source={{ uri: `https://image.tmdb.org/t/p/original${movie?.poster_path}` }}
                 style={{
                     width: '100%',
                     height: '100%',

@@ -3,8 +3,8 @@ import React from 'react'
 import { COLORS, FONTS, icons, SIZES } from '../constants';
 import { AntDesign, MaterialCommunityIcons, FontAwesome, Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native'
-import { crimeMovies } from '../constants/dummyData';
 import SimilarCardItem from './SimilarCardItem';
+import axios from '../utils/axios';
 
 const CustomButton = ({ title, containerStyle, titleStyle, icon, iconStyle, onPress }) => {
 
@@ -35,13 +35,31 @@ const CustomButton = ({ title, containerStyle, titleStyle, icon, iconStyle, onPr
 
 const ModalDetail = ({ route }) => {
 
+    const [similar, setSimilar] = React.useState([]);
+    const [loading, setLoading] = React.useState(false);
     const { movie } = route.params;
     const navigation = useNavigation();
+
+    const fetchSimilar = async () => {
+        if (loading) {
+            return;
+        }
+        setLoading(true);
+        const { data } = await axios.get(`https://api.themoviedb.org/3/movie/${movie?.id}/similar?api_key=b3c006b5a566f0c5cb85bf9ea65d184a&language=en-US&page=1`);
+        setSimilar(data.results);
+        setLoading(false);
+    }
+
+    React.useEffect(() => {
+        fetchSimilar();
+    }, [])
+
+    const movieYear = movie?.release_date.split('-')[0] || movie?.first_air_date.split('-')[0];
 
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.black }}>
             <Image
-                source={{ uri: movie?.image }}
+                source={{ uri: `https://image.tmdb.org/t/p/original${movie?.poster_path}` }}
                 style={{
                     width: '100%',
                     height: 300
@@ -110,11 +128,10 @@ const ModalDetail = ({ route }) => {
                     </TouchableOpacity>
                 </View>
             </View>
-            {/* Movie Title */}
             {/* Similar Section */}
 
             <FlatList
-                data={crimeMovies}
+                data={similar}
                 numColumns={3}
                 keyExtractor={(item) => item.id}
                 showsVerticalScrollIndicator={false}
@@ -137,12 +154,12 @@ const ModalDetail = ({ route }) => {
                                 source={icons.netflixsmall}
                                 resizeMode="contain"
                             />
-                            <Text style={{ color: COLORS.gray2, ...FONTS.body4, letterSpacing: 2 }}>MOVIE</Text>
+                            <Text style={{ color: COLORS.gray2, ...FONTS.body4, letterSpacing: 2 }}>{movie?.media_type == 'tv' ? "Tv Series" : "Movie"}</Text>
                         </View>
                         <View
                             style={{ marginTop: SIZES.base }}
                         >
-                            <Text style={{ color: COLORS.white, ...FONTS.h3 }}>{movie?.title}</Text>
+                            <Text style={{ color: COLORS.white, ...FONTS.h3 }}>{movie?.name || movie?.title}</Text>
                         </View>
                         {/* info section */}
                         <View
@@ -154,8 +171,7 @@ const ModalDetail = ({ route }) => {
                                 style={{ flexDirection: 'row', alignItems: 'center' }}
                             >
                                 <Text style={{ color: 'green', ...FONTS.body3 }}>%97 match</Text>
-                                <Text style={{ color: COLORS.white, ...FONTS.body3, marginLeft: SIZES.base }}>{movie?.year}</Text>
-                                <Text style={{ color: COLORS.white, ...FONTS.body3, marginLeft: SIZES.base }}>{movie?.duration}</Text>
+                                <Text style={{ color: COLORS.white, ...FONTS.body3, marginLeft: SIZES.base }}>{movieYear}</Text>
                             </View>
                         </View>
                         {/* Buttons */}
@@ -173,7 +189,7 @@ const ModalDetail = ({ route }) => {
                                 marginTop: SIZES.padding,
                             }}
                         >
-                            <Text style={{ color: COLORS.white, ...FONTS.body4 }}>{movie?.synopsis}</Text>
+                            <Text style={{ color: COLORS.white, ...FONTS.body4 }}>{movie?.overview}</Text>
                         </View>
                         {/* Actions */}
                         <View
