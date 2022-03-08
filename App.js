@@ -1,5 +1,6 @@
 import { useFonts } from 'expo-font';
-import HomeScreen from './src/screens/HomeScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import Navigation from './src/Navigation/Navigation';
 
 export default function App() {
 
@@ -15,7 +16,9 @@ export default function App() {
   };
 
   return (
-    <HomeScreen />
+    <NavigationContainer>
+      <Navigation />
+    </NavigationContainer>
   );
 }
 
