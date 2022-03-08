@@ -3,13 +3,61 @@ import React from 'react'
 import { LinearGradient } from 'expo-linear-gradient'
 import { MaterialCommunityIcons, AntDesign, Feather } from '@expo/vector-icons';
 import Header from './Header'
-import { COLORS, SIZES, FONTS, images, icons } from '../constants'
+import { COLORS, SIZES, FONTS, images } from '../constants'
+import axios from '../utils/axios';
+import requests from '../utils/requests';
+import Divider from './Divider';
 
 const MovieBanner = () => {
+
+    const [movie, setMovie] = React.useState([]);
+    const [loading, setLoading] = React.useState(false);
+    const [genres, setGenres] = React.useState([]);
+
+    const fetchData = async () => {
+        if (loading) {
+            return;
+        }
+        setLoading(true);
+        const result = await axios.get(requests.fetchNetflixOriginals);
+        setMovie(
+            result.data.results[
+            Math.floor(Math.random() * result.data.results.length - 1)
+            ]
+        );
+        setLoading(false);
+        return result;
+    }
+
+    React.useEffect(() => {
+        fetchData();
+    }, [])
+
+    const fetchGenres = async () => {
+        if (loading) {
+            return;
+        }
+        setLoading(true);
+        const result = await axios.get(requests.fetchGenres);
+        setGenres(result.data.genres);
+        setLoading(false);
+    }
+
+    React.useEffect(() => {
+        fetchGenres();
+    }, [])
+
+    // get specific genre name from movie id
+    const getGenreName = (id) => {
+        const genre = genres?.find(genre => genre.id === id);
+        return genre ? genre.name : null;
+    }
+
+
     return (
         <>
             <ImageBackground
-                source={images.banner}
+                source={{ uri: `https://image.tmdb.org/t/p/original${movie?.poster_path}` }}
                 style={{
                     width: SIZES.width,
                     height: SIZES.height > 700 ? SIZES.height * 0.8 : SIZES.height * 0.7,
@@ -33,9 +81,17 @@ const MovieBanner = () => {
                 }}
             >
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ color: COLORS.white, ...FONTS.body2 }}>Drama</Text>
-                    <Text style={{ color: COLORS.white, ...FONTS.h2, paddingHorizontal: SIZES.base }}>.</Text>
-                    <Text style={{ color: COLORS.white, ...FONTS.body2 }}>Love</Text>
+                    {
+                        movie?.genre_ids?.map((id, index) => {
+                            const genreName = getGenreName(id);
+                            return (
+                                <Text key={index} style={{ ...FONTS.body3, color: COLORS.white, marginHorizontal: SIZES.base }}>
+                                    {genreName}
+                                    {index !== movie?.genre_ids?.length - 1 ? <Divider /> : null}
+                                </Text>
+                            );
+                        })
+                    }
                 </View>
                 <View
                     style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly' }}
