@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native'
 import SimilarCardItem from './SimilarCardItem';
 import axios from '../utils/axios';
 import { APIKEY } from "@env";
+import YoutubePlayer from "react-native-youtube-iframe";
 
 const CustomButton = ({ title, containerStyle, titleStyle, icon, iconStyle, onPress }) => {
 
@@ -38,15 +39,15 @@ const ModalDetail = ({ route }) => {
 
     const [similar, setSimilar] = React.useState([]);
     const [loading, setLoading] = React.useState(false);
+    const [trailerURL, setTrailerURL] = React.useState('');
+    const [playing, setPlaying] = React.useState(false);
     const { movie } = route.params;
     const navigation = useNavigation();
-    //random number between 75 and 100
     const random = Math.floor(Math.random() * (100 - 75 + 1)) + 75;
 
     const fetchSimilar = async () => {
 
-        const urlForMovies = movie?.media_type != 'tv' ? `https://api.themoviedb.org/3/movie/${movie?.id}/similar?api_key=${APIKEY}&language=en-US&page=1`
-            : `https://api.themoviedb.org/3/tv/${movie?.id}/similar?api_key=${APIKEY}&language=en-US&page=1`
+        const urlForMovies = `https://api.themoviedb.org/3/movie/${movie?.id}/similar?api_key=${APIKEY}&language=en-US&page=1`;
 
         if (loading) {
             return;
@@ -61,17 +62,29 @@ const ModalDetail = ({ route }) => {
         fetchSimilar();
     }, [])
 
+    const fetchTrailer = async () => {
+        if (loading) {
+            return;
+        }
+        setLoading(true);
+        const { data } = await axios.get(`https://api.themoviedb.org/3/movie/${movie?.id}/videos?api_key=${APIKEY}&language=en-US`);
+        setTrailerURL(data.results[0].key);
+        setLoading(false);
+    }
+
+    React.useEffect(() => {
+        fetchTrailer();
+    }, [])
+
+
     const movieYear = movie?.release_date?.split('-')[0] || movie?.first_air_date?.split('-')[0];
 
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.black }}>
-            <Image
-                source={{ uri: `https://image.tmdb.org/t/p/original${movie?.backdrop_path}` }}
-                style={{
-                    width: '100%',
-                    height: 250
-                }}
-                resizeMode="contain"
+            <YoutubePlayer
+                height={250}
+                play={playing}
+                videoId={trailerURL}
             />
             {/* Action Buttons */}
             <View
@@ -138,7 +151,7 @@ const ModalDetail = ({ route }) => {
             {/* Similar Section */}
 
             <FlatList
-                data={similar}
+                data={similar.length > 0 ? similar : []}
                 numColumns={3}
                 keyExtractor={(item) => item.id}
                 showsVerticalScrollIndicator={false}

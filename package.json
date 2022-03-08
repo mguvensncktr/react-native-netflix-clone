@@ -15,6 +15,7 @@
     "axios": "^0.26.0",
     "dotenv": "^16.0.0",
     "expo": "~44.0.0",
+    "expo-av": "~10.2.0",
     "expo-font": "~10.0.4",
     "expo-linear-gradient": "~11.0.3",
     "expo-status-bar": "~1.2.0",
@@ -25,7 +26,10 @@
     "react-native-modal": "^13.0.1",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.10.1",
-    "react-native-web": "0.17.1"
+    "react-native-web": "0.17.1",
+    "react-native-webview": "11.15.0",
+    "react-native-youtube": "^2.0.2",
+    "react-native-youtube-iframe": "^2.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
