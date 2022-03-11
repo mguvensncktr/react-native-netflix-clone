@@ -1,4 +1,4 @@
-import { View, Text, TextInput, FlatList, ActivityIndicator, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, FlatList, ActivityIndicator, TouchableOpacity, Keyboard } from 'react-native'
 import React from 'react'
 import { COLORS, FONTS, SIZES } from '../constants'
 import { EvilIcons } from '@expo/vector-icons';
@@ -142,25 +142,6 @@ const SearchScreen = () => {
                 ) : null
             }
             {
-                searchResults.length === 0 && !loading ? (
-                    <View
-                        style={{
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            right: 0,
-                            bottom: 0,
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            backgroundColor: COLORS.black,
-                            opacity: 0.5
-                        }}
-                    >
-                        <Text style={{ color: COLORS.white, ...FONTS.h3, marginHorizontal: SIZES.padding2 }}>No results found for {searchTerm}</Text>
-                    </View>
-                ) : null
-            }
-            {
                 searchTerm.length > 0 && (
                     <TouchableOpacity
                         style={{
@@ -170,6 +151,7 @@ const SearchScreen = () => {
                         }}
                         onPress={() => {
                             setSearchTerm('')
+                            Keyboard.dismiss()
                         }}
                     >
                         <Text style={{ color: COLORS.white, ...FONTS.body4 }}>Cancel</Text>
