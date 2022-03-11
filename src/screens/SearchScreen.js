@@ -5,7 +5,6 @@ import { EvilIcons } from '@expo/vector-icons';
 import requests from '../utils/requests';
 import axios from '../utils/axios';
 import PopularSearchItem from '../components/PopularSearchItem';
-import MovieCardItem from '../components/MovieCardItem';
 import SimilarCardItem from '../components/SimilarCardItem';
 
 

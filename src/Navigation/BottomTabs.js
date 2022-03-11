@@ -6,6 +6,7 @@ import SearchScreen from '../screens/SearchScreen';
 import { COLORS } from '../constants';
 
 import { Foundation, MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
+import DownloadScreen from '../screens/DownloadScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -62,7 +63,7 @@ const BottomTabs = () => {
                     }
                 }}
             />
-            <Tab.Screen name="Downloads" component={ComingSoonScreen}
+            <Tab.Screen name="Downloads" component={DownloadScreen}
                 options={{
                     tabBarIcon: ({ color }) => {
                         return (
