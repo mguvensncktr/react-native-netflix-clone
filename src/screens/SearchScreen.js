@@ -123,7 +123,7 @@ const SearchScreen = () => {
                     </View>
             }
             {
-                loading ? (
+                loading && (
                     <View
                         style={{
                             position: 'absolute',
@@ -134,12 +134,12 @@ const SearchScreen = () => {
                             justifyContent: 'center',
                             alignItems: 'center',
                             backgroundColor: COLORS.black,
-                            opacity: 0.5
+                            opacity: 0.7
                         }}
                     >
                         <ActivityIndicator size="large" color={COLORS.darkRed} />
                     </View>
-                ) : null
+                )
             }
             {
                 searchTerm.length > 0 && (
