@@ -2,6 +2,7 @@ import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ComingSoonScreen from '../screens/ComingSoonScreen';
 import HomeScreen from '../screens/HomeScreen';
+import SearchScreen from '../screens/SearchScreen';
 import { COLORS } from '../constants';
 
 import { Foundation, MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
@@ -48,7 +49,7 @@ const BottomTabs = () => {
                     }
                 }}
             />
-            <Tab.Screen name="Search" component={ComingSoonScreen}
+            <Tab.Screen name="Search" component={SearchScreen}
                 options={{
                     tabBarIcon: ({ color }) => {
                         return (
