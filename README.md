@@ -7,6 +7,8 @@
 - **RN-Dotenv** to hide the api key
 - **react-native-youtube-iframe** to show trailers of the movies
 
+Users can access to the details modal of all movies on every screen like in screenshots. If they're already looking at a movie and decided to see another one from similar tab or something, it will push the new movie modal on top of the old one just like how it is handled on Netflix App.
+
 ### Screenshots:
 
 <table>
