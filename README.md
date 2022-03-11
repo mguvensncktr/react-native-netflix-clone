@@ -17,9 +17,9 @@
   </tr>
   
   <tr>
-    <td><img src="screenshots/1.JPG" width=300 height=500></td>
-    <td><img src="screenshots/2.JPG" width=300 height=500></td>
-    <td><img src="screenshots/3.JPG" width=300 height=500></td>
+    <td><img src="screenshots/1.JPG" width=270 height=480></td>
+    <td><img src="screenshots/2.JPG" width=270 height=480></td>
+    <td><img src="screenshots/3.JPG" width=270 height=480></td>
   </tr>
  </table>
 
@@ -31,9 +31,9 @@
   </tr>
   
   <tr>
-    <td><img src="screenshots/4.JPG" width=300 height=500></td>
-    <td><img src="screenshots/5.JPG" width=300 height=500></td>
-    <td><img src="screenshots/6.JPG" width=300 height=500></td>
+    <td><img src="screenshots/4.JPG" width=270 height=480></td>
+    <td><img src="screenshots/5.JPG" width=270 height=480></td>
+    <td><img src="screenshots/6.JPG" width=270 height=480></td>
   </tr>
  </table>
  
@@ -45,9 +45,9 @@
   </tr>
   
   <tr>
-    <td><img src="screenshots/7.JPG" width=300 height=500></td>
-    <td><img src="screenshots/8.JPG" width=300 height=500></td>
-    <td><img src="screenshots/9.JPG" width=300 height=500></td>
+    <td><img src="screenshots/7.JPG" width=270 height=480></td>
+    <td><img src="screenshots/8.JPG" width=270 height=480></td>
+    <td><img src="screenshots/9.JPG" width=270 height=480></td>
   </tr>
  </table>
 
@@ -58,7 +58,7 @@
   </tr>
   
   <tr>
-    <td><img src="screenshots/10.JPG" width=300 height=500></td>
-    <td><img src="screenshots/11.JPG" width=300 height=500></td>
+    <td><img src="screenshots/10.JPG" width=270 height=480></td>
+    <td><img src="screenshots/11.JPG" width=270 height=480></td>
   </tr>
  </table>
